@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Let Down - Lirik</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 30px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #ff4081;
+    }
+
+    #lyrics {
+      font-size: 1.2em;
+      line-height: 1.6;
+      max-width: 800px;
+    }
+
+    .line {
+      opacity: 0;
+      font-weight: 400;
+      transition: opacity 1s ease-in-out, font-weight 1s ease-in-out;
+    }
+
+    .line.visible {
+      opacity: 1;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Let Down - Radiohead</h1>
+  <div id="lyrics"></div>
+
+  <script>
+    const lines = [
+      "You know, you know where you are with",
+      "You know where you are with",
+      "Floor collapses, floating",
+      "Bouncing back and",
+      "One day, I am gonna grow wings",
+      "A chemical reaction (you know where you are)",
+      "Hysterical and useless (you know where you are)",
+      "Hysterical and (you know where you are)"
+    ];
+
+    let currentLine = 0;
+
+    function showNextLine() {
+      if (currentLine < lines.length) {
+        const container = document.getElementById("lyrics");
+        const lineEl = document.createElement("div");
+        lineEl.classList.add("line");
+        lineEl.textContent = lines[currentLine];
+        container.appendChild(lineEl);
+        // Animate appearance
+        setTimeout(() => {
+          lineEl.classList.add("visible");
+        }, 100);
+        currentLine++;
+        // Jadwal baris berikutnya
+        setTimeout(showNextLine, 2500); // jeda 2.5 detik antar lirik
+      }
+    }
+
+    // Mulai otomatis saat halaman dimuat
+    window.onload = showNextLine;
+  </script>
+
+</body>
+  </html>
